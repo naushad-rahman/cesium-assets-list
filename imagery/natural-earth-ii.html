@@ -1,0 +1,108 @@
+---
+layout: page
+title: Natural Earth II
+---
+{% include JB/setup %}
+<p>
+	<a href="http://cesiumjs.org/stk-terrain/ViewTileset.html"><img src="images/natural-earth-ii.jpg" width="647" height="349" alt="Natural Earth II" /></a>
+</p>
+<p>
+</p>
+<p>
+</p>
+<div class="columns">
+	<div class="columns-left">Name:</div>
+	<div class="columns-right">Natural Earth II</div>
+</div>
+<div class="columns">
+	<div class="columns-left">Description:</div>
+	<div class="columns-right">
+		This is a higher-resolution version of the Natural Earth II tileset that is included in Cesium itself.
+		It was created from the 1:10 million scale Natural Earth II Shaded Relief, Water, Drainages image.  This imagery is most useful for applications where the viewer is in space, though some pixelation is noticeable when viewing from low-Earth oribit.
+	</div>
+</div>
+<div class="columns">
+	<div class="columns-left">Provider:</div>
+	<div class="columns-right">
+		<a href="http://www.agi.com/" target="_blank"><img src="images/agi.png" width="64" height="24" style="border: none; vertical-align: bottom; margin-right: 10px;" alt="Analytical Graphics, Inc." title="Analytical Graphics, Inc." /></a>
+		<br />
+		Tileset Copyright &copy; 2012-2014 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  Original data courtesy Natural Earth and in the public domain.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
+		<br />
+		Please send any feedback on this tileset to <a href="mailto:support@agi.com">support@agi.com</a>.
+	</div>
+</div>
+<div class="columns">
+	<div class="columns-left">Tiles URL:</div>
+	<div class="columns-right">
+		<pre>http://cesiumjs.org/NaturalEarthII</pre>
+	</div>
+</div>
+<div class="columns">
+	<div class="columns-left">Extent</div>
+	<div class="columns-right">
+		<table>
+			<tr>
+				<td>West:</td><td>-180 deg</td>
+				<td>East:</td><td>180 deg</td>
+			</tr>
+			<tr>
+				<td>South:</td><td>-90 deg</td>
+				<td>North:</td><td>90 deg<td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="columns">
+	<div class="columns-left">Maximum Level:</div>
+	<div class="columns-right">5</div>
+</div>
+<div class="columns">
+	<div class="columns-left"></div>
+	<div class="columns-right">
+		<a class="btn btn-primary btn-small" href="http://cesiumjs.org/stk-terrain/ViewTileset.html">View in Cesium</a>
+	</div>
+</div>
+
+<h2>Using this tileset in Cesium</h2>
+<p>
+	<pre>
+// In an application that uses CesiumWidget:
+var widget = new Cesium.CesiumWidget({
+	imageryProvider : new Cesium.TileMapServiceImageryProvider({
+		url : 'http://cesiumjs.org/NaturalEarthII'
+	})
+});
+
+// In an application that uses Viewer:
+var viewer = new Cesium.Viewer({
+	imageryProvider : new Cesium.TileMapServiceImageryProvider({
+		url : 'http://cesiumjs.org/NaturalEarthII'
+	}),
+	baseLayerPicker : false
+});
+
+// In other applications:
+var scene = ...;
+scene.imageryLayers.removeAll(); // optional
+scene.imageryLayers.add(new Cesium.TileMapServiceImageryProvider({
+	url : 'http://cesiumjs.org/NaturalEarthII'
+}), 0);
+	</pre>
+</p>
+<a name="TermsOfUse"></a>
+<h2>Terms of use</h2>
+<p>
+	Natural Earth II is provided for use in any application and for any purpose, including both commercial and non-commercial purposes, subject to the following conditions:
+</p>
+<p>
+<ul>
+	<li>You may not put an unreasonable burden on the Natural Earth II server(s).  If you're concerned that your use may be deemed unreasonable, please <a href="mailto:support@agi.com">contact us</a> to discuss it.</li>
+	<li>You must clearly display the attribution for this dataset, "&copy; Analytical Graphics, Inc.", any time any portion of the tileset is visible.</li>
+	<li>You agree that Natural Earth II is provided as-is and at-will, and will not hold us responsible for anything bad that happens as a result of your use of the tileset or your inability to use the tileset.  While we do not foresee doing so, we reserve the right to shut it down at any time, with or without notice.</li>
+	<li>You agree that these terms of use may change at any time, and that your continued use of the tileset constitutes acceptance of the new terms.</li>
+</ul>
+</p>
+<h2>Offline and disconnected use</h2>
+<p>
+	This tileset can be downloaded for disconnected and offline use from the <a href="https://github.com/AnalyticalGraphicsInc/cesium-assets">cesium-assets</a> repository on GitHub.
+</p>
