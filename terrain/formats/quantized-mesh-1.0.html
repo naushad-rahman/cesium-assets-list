@@ -4,7 +4,7 @@ title: quantized-mesh-1.0 terrain format
 ---
 {% include JB/setup %}
 <p>
-	A <a href="../index.html">terrain tileset</a> in <code>quantized-mesh-1.0</code> format is simple multi-resolution quadtree pyramid of heightmaps according to the <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> layout and global-geodetic profile.  All tiles have the extension <code>.terrain</code>.  So, if the Tiles URL for a tileset is:
+	A <a href="../index.html">terrain tileset</a> in <code>quantized-mesh-1.0</code> format is a simple multi-resolution quadtree pyramid of heightmaps according to the <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> layout and global-geodetic profile.  All tiles have the extension <code>.terrain</code>.  So, if the Tiles URL for a tileset is:
 </p>
 <pre>
 http://cesiumjs.org/stk-terrain/tilesets/world/tiles
@@ -29,6 +29,15 @@ http://cesiumjs.org/stk-terrain/tilesets/world/tiles
 	<li>(0 deg, 0 deg) - (90 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain</a></li>
 	<li>(90 deg, 0 deg) - (180 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain</a></li>
 </ul>
+<p>
+	When requesting tiles, be sure to include the following HTTP header in the request:
+</p>
+<pre>
+Accept: application/octet-stream
+</pre>
+<p>
+	Otherwise, some servers may return a different representation of the tile than the one described here.
+</p>
 <p>
 	Each tile is a specially-encoded triangle mesh where vertices overlap their neighbors at tile edges.  In other words, at the root, the eastern-most vertices in the western tile have the same longitude as the western-most vertices in the eastern tile.
 </p>
