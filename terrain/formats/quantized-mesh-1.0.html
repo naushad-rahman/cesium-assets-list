@@ -1,0 +1,181 @@
+---
+layout: page
+title: quantized-mesh-1.0 terrain format
+---
+{% include JB/setup %}
+<p>
+	A <a href="../index.html">terrain tileset</a> in <code>quantized-mesh-1.0</code> format is simple multi-resolution quadtree pyramid of heightmaps according to the <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> layout and global-geodetic profile.  All tiles have the extension <code>.terrain</code>.  So, if the Tiles URL for a tileset is:
+</p>
+<pre>
+http://cesiumjs.org/stk-terrain/tilesets/world/tiles
+</pre>
+<p>
+	Then the two root files of the pyramid are found at these URLs:
+</p>
+<ul>
+	<li>(-180 deg, -90 deg) - (0 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/0/0/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/0/0/0.terrain</a></li>
+	<li>(0 deg, -90 deg) - (180 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/0/1/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/0/1/0.terrain</a></li>
+</ul>
+<p>
+	The eight tiles at the next level are found at these URLs:
+</p>
+<ul>
+	<li>(-180 deg, -90 deg) - (-90 deg, 0 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/0.terrain</a></li>
+	<li>(-90 deg, -90 deg) - (0 deg, 0 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/0.terrain</a></li>
+	<li>(0 deg, -90 deg) - (90 deg, 0 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/0.terrain</a></li>
+	<li>(90 deg, -90 deg) - (180 deg, 0 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/0.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/0.terrain</a></li>
+	<li>(-180 deg, 0 deg) - (-90 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/1.terrain</a></li>
+	<li>(-90 deg, 0 deg) - (0 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/1.terrain</a></li>
+	<li>(0 deg, 0 deg) - (90 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain</a></li>
+	<li>(90 deg, 0 deg) - (180 deg, 90 deg) - <a href="http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain">http://cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain</a></li>
+</ul>
+<p>
+	Each tile is a specially-encoded triangle mesh where vertices overlap their neighbors at tile edges.  In other words, at the root, the eastern-most vertices in the western tile have the same longitude as the western-most vertices in the eastern tile.
+</p>
+<p>
+	Terrain tiles are served gzipped.  Once extracted, tiles are little-endian, binary data.  The first part of the file is a header with the following format.  Doubles are IEEE 754 64-bit floating-point numbers, and Floats are IEEE 754 32-bit floating-point numbers.
+</p>
+<pre>
+struct QuantizedMeshHeader
+{
+	// The center of the tile in Earth-centered Fixed coordinates.
+	double CenterX;
+	double CenterY;
+	double CenterZ;
+	
+	// The minimum and maximum heights in the area covered by this tile.
+	// The minimum may be lower and the maximum may be higher than
+	// the height of any vertex in this tile in the case that the min/max vertex
+	// was removed during mesh simplification, but these are the appropriate
+	// values to use for analysis or visualization.
+	float MinimumHeight;
+	float MaximumHeight;
+
+	// The tile’s bounding sphere.  The X,Y,Z coordinates are again expressed
+	// in Earth-centered Fixed coordinates, and the radius is in meters.
+	double BoundingSphereCenterX;
+	double BoundingSphereCenterY;
+	double BoundingSphereCenterZ;
+	double BoundingSphereRadius;
+
+	// The horizon occlusion point, expressed in the ellipsoid-scaled Earth-centered Fixed frame.
+	// If this point is below the horizon, the entire tile is below the horizon.
+	// See http://cesiumjs.org/2013/04/25/Horizon-culling/ for more information.
+	double HorizonOcclusionPointX;
+	double HorizonOcclusionPointY;
+	double HorizonOcclusionPointZ;
+};
+</pre>
+<p>
+	Immediately following the header is the vertex data.  An <code>unsigned int</code> is a 32-bit unsigned integer and an <code>unsigned short</code> is a 16-bit unsigned integer.
+</p>
+<pre>
+struct VertexData
+{
+	unsigned int vertexCount;
+	unsigned short u[vertexCount];
+	unsigned short v[vertexCount];
+	unsigned short height[vertexCount];
+};
+</pre>
+<p>
+	The <code>vertexCount</code> field indicates the size of the three arrays that follow.  The three arrays are zig-zag encoded in order to make small integers, regardless of their sign, use a small number of bits.  Decoding a zig-zag encoded value is straightforward:
+</p>
+<pre>
+decoded = (encodedValue >> 1) ^ (-(encodedValue & 1))
+</pre>
+<p>
+	Once decoded, the meaning of a value in each array is as follows:
+</p>
+<table class="zipsTable">
+	<tr>
+		<td>Field</td>
+		<td>Meaning</td>
+	</tr>
+	<tr>
+		<td>u</td>
+		<td>
+			The horizontal coordinate of the vertex in the tile.  When the <code>u</code> value is 0, the vertex is on the Western edge of the tile.  When the value is 32767, the vertex is on the Eastern edge of the tile.  For other values, the vertex's longitude is a linear interpolation between the Western and Eastern edges of the tile.
+		</td>
+	</tr>
+	<tr>
+		<td>v</td>
+		<td>
+			The vertical coordinate of the vertex in the tile.  When the <code>v</code> value is 0, the vertex is on the Southern edge of the tile.  When the value is 32767, the vertex is on the Northern edge of the tile.  For other values, the vertex's latitude is a linear interpolation between the Southern and Nothern edges of the tile.
+		</td>
+	</tr>
+	<tr>
+		<td>height</td>
+		<td>
+			The height of the vertex in the tile.  When the <code>height</code> value is 0, the vertex's height is equal to the minimum height within the tile, as specified in the tile's header.  When the value is 32767, the vertex's height is equal to the maximum height within the tile.  For other values, the vertex's height is a linear interpolation between the minimum and maximum heights.
+		</td>
+	</tr>
+</table>
+<p>
+	Immediately following the vertex data is the index data.  Indices specify how the vertices are linked together into triangles.  If tile has more than 65536 vertices, the tile uses the <code>IndexData32</code> structure to encode indices.  Otherwise, it uses the <code>IndexData16</code> structure.
+</p>
+<pre>
+struct IndexData16
+{
+	unsigned int triangleCount;
+	unsigned short indices[triangleCount * 3];
+}
+
+struct IndexData32
+{
+	unsigned int triangleCount;
+	unsigned int indices[triangleCount * 3];
+}
+</pre>
+<p>
+	Indices are encoded using the high water mark encoding from <a href="https://code.google.com/p/webgl-loader/">webgl-loader</a>.  Indices are decoded as follows:
+</p>
+<pre>
+var highest = 0;
+for (var i = 0; i < indices.length; ++i) {
+	var code = indices[i];
+	indices[i] = highest - code;
+	if (code === 0) {
+		++highest;
+	}
+}
+</pre>
+<p>
+	Each triplet of indices specifies one triangle to be rendered, in counter-clockwise winding order.  Following the triangle indices is four more list of indices:
+</p>
+<pre>
+struct EdgeIndices16
+{
+	unsigned int westVertexCount;
+	unsigned short westIndices[westVertexCount];
+
+	unsigned int southVertexCount;
+	unsigned short southIndices[southVertexCount];
+
+	unsigned int eastVertexCount;
+	unsigned short eastIndices[eastVertexCount];
+
+	unsigned int northVertexCount;
+	unsigned short northIndices[northVertexCount];
+}
+
+struct EdgeIndices32
+{
+	unsigned int westVertexCount;
+	unsigned int westIndices[westVertexCount];
+
+	unsigned int southVertexCount;
+	unsigned int southIndices[southVertexCount];
+
+	unsigned int eastVertexCount;
+	unsigned int eastIndices[eastVertexCount];
+
+	unsigned int northVertexCount;
+	unsigned int northIndices[northVertexCount];
+}
+</pre>
+<p>
+	These index lists enumerate the vertices that are on the edges of the tile.  It is helpful to know which vertices are on the edge in order to add skirts to hide cracks between adjacent levels of detail.
+</p>
+
+</p>
