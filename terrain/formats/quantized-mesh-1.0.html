@@ -104,13 +104,13 @@ decoded = (encodedValue >> 1) ^ (-(encodedValue & 1))
     <tr>
         <td>u</td>
         <td>
-            The horizontal coordinate of the vertex in the tile.  When the <code>u</code> value is 0, the vertex is on the Western edge of the tile.  When the value is 32767, the vertex is on the Eastern edge of the tile.  For other values, the vertex's longitude is a linear interpolation between the Western and Eastern edges of the tile.
+            The horizontal coordinate of the vertex in the tile.  When the <code>u</code> value is 0, the vertex is on the Western edge of the tile.  When the value is 32767, the vertex is on the Eastern edge of the tile.  For other values, the vertex's longitude is a linear interpolation between the longitudes of the Western and Eastern edges of the tile.
         </td>
     </tr>
     <tr>
         <td>v</td>
         <td>
-            The vertical coordinate of the vertex in the tile.  When the <code>v</code> value is 0, the vertex is on the Southern edge of the tile.  When the value is 32767, the vertex is on the Northern edge of the tile.  For other values, the vertex's latitude is a linear interpolation between the Southern and Nothern edges of the tile.
+            The vertical coordinate of the vertex in the tile.  When the <code>v</code> value is 0, the vertex is on the Southern edge of the tile.  When the value is 32767, the vertex is on the Northern edge of the tile.  For other values, the vertex's latitude is a linear interpolation between the latitudes of the Southern and Nothern edges of the tile.
         </td>
     </tr>
     <tr>
