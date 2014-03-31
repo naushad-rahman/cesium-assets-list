@@ -4,80 +4,80 @@ title: Bing Maps
 ---
 {% include JB/setup %}
 <p>
-	<a href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/"><img src="images/bing-maps.jpg" width="815" height="416" alt="Bing Maps" /></a>
+    <a href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/"><img src="images/bing-maps.jpg" width="815" height="416" alt="Bing Maps" /></a>
 </p>
 <p>
 </p>
 <p>
 </p>
 <div class="columns">
-	<div class="columns-left">Name:</div>
-	<div class="columns-right">Bing Maps</div>
+    <div class="columns-left">Name:</div>
+    <div class="columns-right">Bing Maps</div>
 </div>
 <div class="columns">
-	<div class="columns-left">Description:</div>
-	<div class="columns-right">
-		Very high resolution, global imagery, including sub-meter resolution imagery in some parts of the world.  Various
-		options for free use on the Internet are available.  This is the default imagery used in most Cesium applications.
-	</div>
+    <div class="columns-left">Description:</div>
+    <div class="columns-right">
+        Very high resolution, global imagery, including sub-meter resolution imagery in some parts of the world.  Various
+        options for free use on the Internet are available.  This is the default imagery used in most Cesium applications.
+    </div>
 </div>
 <div class="columns">
-	<div class="columns-left">Provider:</div>
-	<div class="columns-right">
-		<a href="http://www.microsoft.com/" target="_blank">
-			<img src="images/ms_footerlogo_symbol.png" width="78" height="14" />
-		</a>
-		<br />
-		See the <a href="http://www.microsoft.com/maps">Bing Maps Platform</a> website for copyright, licensing, and terms of use information.
-	</div>
+    <div class="columns-left">Provider:</div>
+    <div class="columns-right">
+        <a href="http://www.microsoft.com/" target="_blank">
+            <img src="images/ms_footerlogo_symbol.png" width="78" height="14" />
+        </a>
+        <br />
+        See the <a href="http://www.microsoft.com/maps">Bing Maps Platform</a> website for copyright, licensing, and terms of use information.
+    </div>
 </div>
 <div class="columns">
-	<div class="columns-left">Metadata URL:</div>
-	<div class="columns-right">
-		<pre>//dev.virtualearth.net</pre>
-		<pre>http://dev.virtualearth.net</pre>
-		<pre>https://dev.virtualearth.net</pre>
-	</div>
+    <div class="columns-left">Metadata URL:</div>
+    <div class="columns-right">
+        <pre>//dev.virtualearth.net</pre>
+        <pre>http://dev.virtualearth.net</pre>
+        <pre>https://dev.virtualearth.net</pre>
+    </div>
 </div>
 <div class="columns">
-	<div class="columns-left">Extent</div>
-	<div class="columns-right">
-		<table>
-			<tr>
-				<td>West:</td><td>-180 deg</td>
-				<td>East:</td><td>180 deg</td>
-			</tr>
-			<tr>
-				<td>South:</td><td>-85.05 deg</td>
-				<td>North:</td><td>85.05 deg<td>
-			</tr>
-		</table>
-	</div>
+    <div class="columns-left">Extent</div>
+    <div class="columns-right">
+        <table>
+            <tr>
+                <td>West:</td><td>-180 deg</td>
+                <td>East:</td><td>180 deg</td>
+            </tr>
+            <tr>
+                <td>South:</td><td>-85.05 deg</td>
+                <td>North:</td><td>85.05 deg<td>
+            </tr>
+        </table>
+    </div>
 </div>
 <div class="columns">
-	<div class="columns-left">Maximum Level:</div>
-	<div class="columns-right">21</div>
+    <div class="columns-left">Maximum Level:</div>
+    <div class="columns-right">21</div>
 </div>
 <div class="columns">
-	<div class="columns-left"></div>
-	<div class="columns-right">
-		<a class="btn btn-primary btn-small" href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/">View in Cesium</a>
-	</div>
+    <div class="columns-left"></div>
+    <div class="columns-right">
+        <a class="btn btn-primary btn-small" href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/">View in Cesium</a>
+    </div>
 </div>
 
 <h2>Using this tileset in Cesium</h2>
 <p>
-	<pre>
+    <pre>
 // Get your own Bing Maps API key at https://www.bingmapsportal.com and include the line
 // below in your application, prior to creating a Cesium scene:
 Cesium.BingMapsApi.defaultKey = 'put your API key here';
-	
+    
 // Applications that use CesiumWidget or Viewer automatically use Bing Maps for imagery by default.
 // In other applications:
 var scene = ...;
 scene.imageryLayers.removeAll(); // optional
 scene.imageryLayers.add(new Cesium.BingMapsImageryProvider({
-	url : '//dev.virtualearth.net'
+    url : '//dev.virtualearth.net'
 }));
-	</pre>
+    </pre>
 </p>
