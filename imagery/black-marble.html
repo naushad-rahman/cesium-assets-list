@@ -4,7 +4,7 @@ title: Black Marble
 ---
 {% include JB/setup %}
 <p>
-	<a href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2FBlackMarble"><img src="images/black-marble.jpg" width="762" height="421" alt="Black Marble" /></a>
+	<a href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fblackmarble"><img src="images/black-marble.jpg" width="762" height="421" alt="Black Marble" /></a>
 </p>
 <p>
 </p>
@@ -33,7 +33,7 @@ title: Black Marble
 <div class="columns">
 	<div class="columns-left">Tiles URL:</div>
 	<div class="columns-right">
-		<pre>http://cesiumjs.org/blackmarble</pre>
+		<pre>http://cesiumjs.org/tilesets/imagery/blackmarble</pre>
 	</div>
 </div>
 <div class="columns">
@@ -58,7 +58,7 @@ title: Black Marble
 <div class="columns">
 	<div class="columns-left"></div>
 	<div class="columns-right">
-		<a class="btn btn-primary btn-small" href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2FBlackMarble">View in Cesium</a>
+		<a class="btn btn-primary btn-small" href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fblackmarble">View in Cesium</a>
 	</div>
 </div>
 
@@ -68,14 +68,14 @@ title: Black Marble
 // In an application that uses CesiumWidget:
 var widget = new Cesium.CesiumWidget({
 	imageryProvider : new Cesium.TileMapServiceImageryProvider({
-		url : 'http://cesiumjs.org/blackmarble'
+		url : 'http://cesiumjs.org/tilesets/imagery/blackmarble'
 	})
 });
 
 // In an application that uses Viewer:
 var viewer = new Cesium.Viewer({
 	imageryProvider : new Cesium.TileMapServiceImageryProvider({
-		url : 'http://cesiumjs.org/blackmarble'
+		url : 'http://cesiumjs.org/tilesets/imagery/blackmarble'
 	}),
 	baseLayerPicker : false
 });
@@ -84,7 +84,7 @@ var viewer = new Cesium.Viewer({
 var scene = ...;
 scene.imageryLayers.removeAll(); // optional
 scene.imageryLayers.add(new Cesium.TileMapServiceImageryProvider({
-	url : 'http://cesiumjs.org/blackmarble'
+	url : 'http://cesiumjs.org/tilesets/imagery/blackmarble'
 }));
 	</pre>
 </p>
