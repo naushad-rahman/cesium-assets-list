@@ -4,7 +4,7 @@ title: STK World Terrain
 ---
 {% include JB/setup %}
 <p>
-    <a href="http://cesiumjs.org/stk-terrain/ViewTileset.html?tileset=http%3A%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles"><img src="images/stk-world-terrain.jpg" width="834" height="292" alt="STK World Terrain" /></a>
+    <a href="//cesiumjs.org/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles"><img src="images/stk-world-terrain.jpg" width="834" height="292" alt="STK World Terrain" /></a>
 </p>
 <p>
 </p>
@@ -33,6 +33,8 @@ title: STK World Terrain
 <div class="columns">
     <div class="columns-left">Tiles URL:</div>
     <div class="columns-right">
+        <pre>//cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
+        <pre>https://cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
         <pre>http://cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
     </div>
 </div>
@@ -64,7 +66,7 @@ title: STK World Terrain
 <div class="columns">
     <div class="columns-left"></div>
     <div class="columns-right">
-        <a class="btn btn-primary btn-small" href="http://cesiumjs.org/stk-terrain/ViewTileset.html?tileset=http%3A%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles">View in Cesium</a>
+        <a class="btn btn-primary btn-small" href="//cesiumjs.org/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles">View in Cesium</a>
     </div>
 </div>
 
@@ -74,21 +76,21 @@ title: STK World Terrain
 // In an application that uses CesiumWidget:
 var widget = new Cesium.CesiumWidget({
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : 'http://cesiumjs.org/stk-terrain/tilesets/world/tiles'
+        url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
     })
 });
 
 // In an application that uses Viewer:
 var viewer = new Cesium.Viewer({
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : 'http://cesiumjs.org/stk-terrain/tilesets/world/tiles'
+        url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
     })
 });
 
 // In other applications:
 var scene = ...;
 scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-    url : 'http://cesiumjs.org/stk-terrain/tilesets/world/tiles'
+    url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
 });
     </pre>
 </p>
