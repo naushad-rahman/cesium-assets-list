@@ -4,7 +4,7 @@ title: Small Terrain
 ---
 {% include JB/setup %}
 <p>
-    <a href="http://cesiumjs.org/stk-terrain/ViewTileset.html?tileset=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fterrain%2Fsmallterrain"><img src="images/smallterrain.jpg" width="912" height="491" alt="Small Terrain" /></a>
+    <a href="{{ BASE_PATH }}/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Ftilesets%2Fterrain%2Fsmallterrain"><img src="images/smallterrain.jpg" width="912" height="491" alt="Small Terrain" /></a>
 </p>
 <p>
 </p>
@@ -36,6 +36,8 @@ title: Small Terrain
 <div class="columns">
     <div class="columns-left">Tiles URL:</div>
     <div class="columns-right">
+        <pre>//cesiumjs.org/tilesets/terrain/smallterrain</pre>
+        <pre>https://cesiumjs.org/tilesets/terrain/smallterrain</pre>
         <pre>http://cesiumjs.org/tilesets/terrain/smallterrain</pre>
     </div>
 </div>
@@ -67,7 +69,7 @@ title: Small Terrain
 <div class="columns">
     <div class="columns-left"></div>
     <div class="columns-right">
-        <a class="btn btn-primary btn-small" href="http://cesiumjs.org/stk-terrain/ViewTileset.html?tileset=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fterrain%2Fsmallterrain">View in Cesium</a>
+        <a class="btn btn-primary btn-small" href="{{ BASE_PATH }}/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Ftilesets%2Fterrain%2Fsmallterrain">View in Cesium</a>
     </div>
 </div>
 
@@ -77,21 +79,21 @@ title: Small Terrain
 // In an application that uses CesiumWidget:
 var widget = new Cesium.CesiumWidget({
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : 'http://cesiumjs.org/tilesets/terrain/smallterrain'
+        url : '//cesiumjs.org/tilesets/terrain/smallterrain'
     })
 });
 
 // In an application that uses Viewer:
 var viewer = new Cesium.Viewer({
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : 'http://cesiumjs.org/tilesets/terrain/smallterrain'
+        url : '//cesiumjs.org/tilesets/terrain/smallterrain'
     })
 });
 
 // In other applications:
 var scene = ...;
 scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-    url : 'http://cesiumjs.org/tilesets/terrain/smallterrain'
+    url : '//cesiumjs.org/tilesets/terrain/smallterrain'
 });
     </pre>
 </p>

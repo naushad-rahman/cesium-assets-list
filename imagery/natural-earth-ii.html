@@ -4,7 +4,7 @@ title: Natural Earth II
 ---
 {% include JB/setup %}
 <p>
-    <a href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fnaturalearthii"><img src="images/natural-earth-ii.jpg" width="647" height="349" alt="Natural Earth II" /></a>
+    <a href="{{ BASE_PATH }}/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fnaturalearthii"><img src="images/natural-earth-ii.jpg" width="647" height="349" alt="Natural Earth II" /></a>
 </p>
 <p>
 </p>
@@ -34,6 +34,8 @@ title: Natural Earth II
 <div class="columns">
     <div class="columns-left">Tiles URL:</div>
     <div class="columns-right">
+        <pre>//cesiumjs.org/tilesets/imagery/naturalearthii</pre>
+        <pre>https://cesiumjs.org/tilesets/imagery/naturalearthii</pre>
         <pre>http://cesiumjs.org/tilesets/imagery/naturalearthii</pre>
     </div>
 </div>
@@ -59,7 +61,7 @@ title: Natural Earth II
 <div class="columns">
     <div class="columns-left"></div>
     <div class="columns-right">
-        <a class="btn btn-primary btn-small" href="http://cesiumjs.org/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=http%3A%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fnaturalearthii">View in Cesium</a>
+        <a class="btn btn-primary btn-small" href="{{ BASE_PATH }}/Cesium/Build/Apps/CesiumViewer/?tmsImageryUrl=%2F%2Fcesiumjs.org%2Ftilesets%2Fimagery%2Fnaturalearthii">View in Cesium</a>
     </div>
 </div>
 
@@ -69,14 +71,14 @@ title: Natural Earth II
 // In an application that uses CesiumWidget:
 var widget = new Cesium.CesiumWidget({
     imageryProvider : new Cesium.TileMapServiceImageryProvider({
-        url : 'http://cesiumjs.org/tilesets/imagery/naturalearthii'
+        url : '//cesiumjs.org/tilesets/imagery/naturalearthii'
     })
 });
 
 // In an application that uses Viewer:
 var viewer = new Cesium.Viewer({
     imageryProvider : new Cesium.TileMapServiceImageryProvider({
-        url : 'http://cesiumjs.org/tilesets/imagery/naturalearthii'
+        url : '//cesiumjs.org/tilesets/imagery/naturalearthii'
     }),
     baseLayerPicker : false
 });
@@ -85,7 +87,7 @@ var viewer = new Cesium.Viewer({
 var scene = ...;
 scene.imageryLayers.removeAll(); // optional
 scene.imageryLayers.add(new Cesium.TileMapServiceImageryProvider({
-    url : 'http://cesiumjs.org/tilesets/imagery/naturalearthii'
+    url : '//cesiumjs.org/tilesets/imagery/naturalearthii'
 }));
     </pre>
 </p>
