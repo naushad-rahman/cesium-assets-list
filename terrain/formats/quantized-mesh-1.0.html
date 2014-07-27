@@ -33,7 +33,7 @@ title: quantized-mesh-1.0 terrain format
     When requesting tiles, be sure to include the following HTTP header in the request:
 </p>
 <pre>
-Accept: application/octet-stream
+Accept: application/vnd.quantized-mesh,application/octet-stream;q=0.9
 </pre>
 <p>
     Otherwise, some servers may return a different representation of the tile than the one described here.
@@ -185,4 +185,28 @@ struct EdgeIndices32
 </pre>
 <p>
     These index lists enumerate the vertices that are on the edges of the tile.  It is helpful to know which vertices are on the edges in order to add skirts to hide cracks between adjacent levels of detail.
+</p>
+<p>
+    An optional byte may follow that defines additional features for the tileset:
+</p>
+<pre>
+struct ExtensionFlags
+{
+    unsigned char extensionFlags;
+}
+</pre>
+<p>
+    The <code>extensionFlags</code> byte is a bitfield, where each bit identifies the presence of extension data.  As new extensions are defined, they will be assigned a bit in the extensions byte to indicate the presences of additional data following the <code>ExtensionsFlags</code>. If no extensions are defined for the tileset, <code>ExtensionFlags</code> is not included in the quanitzed-mesh.  If multiple extensions are defined for a tileset, they are ordered in ascending order by the value of their extension flag.
+</p>
+<p>
+    The first bit in the <code>extensionFlags</code> indicates the presences of Oct-Encoded Per-Vertex Normals.
+</p>
+<pre>
+struct OctEncodedVertexNormals
+{
+    unsigned char xy[vertexCount * 2];
+}
+</pre>
+<p>
+    Oct-encoding is used to compress the traditional x,y,z 96-bit floating point unit vector into an x,y 16-bit representation. The 'oct' encoding is described in "A Survey of Efficient Representations of Independent Unit Vectors", Cigolle et al 2014: <a href="http://jcgt.org/published/0003/02/01/">http://jcgt.org/published/0003/02/01/</a>
 </p>
