@@ -210,3 +210,9 @@ struct OctEncodedVertexNormals
 <p>
     Oct-encoding is used to compress the traditional x,y,z 96-bit floating point unit vector into an x,y 16-bit representation. The 'oct' encoding is described in "A Survey of Efficient Representations of Independent Unit Vectors", Cigolle et al 2014: <a href="http://jcgt.org/published/0003/02/01/">http://jcgt.org/published/0003/02/01/</a>
 </p>
+<p>
+    For oct-encoded per-vertex normals to be included in the quantized-mesh, the client must request this extension by using the following HTTP Header:
+</p>
+<pre>
+Accept : 'application/vnd.quantized-mesh;extensions=vertexnormals,application/octet-stream;q=0.9,*/*;q=0.01'
+</pre>
