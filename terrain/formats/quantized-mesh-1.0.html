@@ -186,33 +186,51 @@ struct EdgeIndices32
 <p>
     These index lists enumerate the vertices that are on the edges of the tile.  It is helpful to know which vertices are on the edges in order to add skirts to hide cracks between adjacent levels of detail.
 </p>
+<h2>Extensions</h2>
 <p>
-    An optional byte may follow that defines additional features for the tileset:
+    Extension data may follow to supplement the quantized-mesh with additional information.  Each extension begins with an Extension header, consisting of a unique identifier and the size of the extension data in bytes:
 </p>
 <pre>
-struct ExtensionFlags
+struct ExtensionHeader
 {
-    unsigned char extensionFlags;
+    unsigned char extensionId;
+    unsigned int extensionLength;
 }
 </pre>
 <p>
-    The <code>extensionFlags</code> byte is a bitfield, where each bit identifies the presence of extension data.  As new extensions are defined, they will be assigned a bit in the extensions byte to indicate the presences of additional data following the <code>ExtensionsFlags</code>. If no extensions are defined for the tileset, <code>ExtensionFlags</code> is not included in the quanitzed-mesh.  If multiple extensions are defined for a tileset, they are ordered in ascending order by the value of their extension flag.
+    As new extensions are defined, they will be assigned a unique identifier. If no extensions are defined for the tileset, an <code>ExtensionHeader</code> will not included in the quanitzed-mesh.  The following extensions may be defined for a quantized-mesh:
 </p>
-<p>
-    The first bit in the <code>extensionFlags</code> indicates the presences of Oct-Encoded Per-Vertex Normals.
-</p>
-<pre>
+<div class="columns">
+    <div class="columns-left">Name:</div>
+    <div class="columns-right">Oct-Encoded Per-Vertex Normals</div>
+</div>
+<div class="columns">
+    <div class="columns-left">Id:</div>
+    <div class="columns-right"><code>1</code></div>
+</div>
+<div class="columns">
+    <div class="columns-left">Description:</div>
+    <div class="columns-right">
+        Adds per vertex lighting attributes to the quantized-mesh.  Each lighting normal uses oct-encoding to compress the traditional x, y, z 96-bit floating point unit vector into an x,y 16-bit representation. The 'oct' encoding is described in "A Survey of Efficient Representations of Independent Unit Vectors", Cigolle et al 2014: <a href="http://jcgt.org/published/0003/02/01/">http://jcgt.org/published/0003/02/01/</a>
+    </div>
+</div>
+<div class="columns">
+    <div class="columns-left">Data Definition:</div>
+    <div class="columns-right">
+        <pre>
 struct OctEncodedVertexNormals
 {
     unsigned char xy[vertexCount * 2];
 }
-</pre>
-<p>
-    Oct-encoding is used to compress the traditional x,y,z 96-bit floating point unit vector into an x,y 16-bit representation. The 'oct' encoding is described in "A Survey of Efficient Representations of Independent Unit Vectors", Cigolle et al 2014: <a href="http://jcgt.org/published/0003/02/01/">http://jcgt.org/published/0003/02/01/</a>
-</p>
-<p>
-    For oct-encoded per-vertex normals to be included in the quantized-mesh, the client must request this extension by using the following HTTP Header:
-</p>
-<pre>
+		</pre>
+    </div>
+</div>
+<div class="columns">
+    <div class="columns-left">Requesting:</div>
+    <div class="columns-right">
+		For oct-encoded per-vertex normals to be included in the quantized-mesh, the client must request this extension by using the following HTTP Header:
+        <pre>
 Accept : 'application/vnd.quantized-mesh;extensions=vertexnormals,application/octet-stream;q=0.9,*/*;q=0.01'
-</pre>
+		</pre>
+    </div>
+</div>
