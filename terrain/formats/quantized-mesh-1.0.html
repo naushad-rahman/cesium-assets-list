@@ -123,6 +123,9 @@ decoded = (encodedValue >> 1) ^ (-(encodedValue & 1))
 <p>
     Immediately following the vertex data is the index data.  Indices specify how the vertices are linked together into triangles.  If tile has more than 65536 vertices, the tile uses the <code>IndexData32</code> structure to encode indices.  Otherwise, it uses the <code>IndexData16</code> structure.
 </p>
+<p>
+    To enforce proper byte alignment, padding is added before the IndexData to ensure 2 byte alignment for <code>IndexData16</code> and 4 byte alignment for <code>IndexData32</code>.
+</p>
 <pre>
 struct IndexData16
 {
@@ -233,7 +236,12 @@ struct OctEncodedVertexNormals
     <div class="columns-right">
 		For oct-encoded per-vertex normals to be included in the quantized-mesh, the client must request this extension by using the following HTTP Header:
         <pre>
-Accept : 'application/vnd.quantized-mesh;extensions=vertexnormals,application/octet-stream;q=0.9,*/*;q=0.01'
+Accept : 'application/vnd.quantized-mesh;extensions=octvertexnormals'
 		</pre>
+    </div>
+	<div class="columns-left">Comments:</div>
+    <div class="columns-right">
+		The original implementation of this extension was requested using the extension name <code>vertexnormals</code>.  The <code>vertexnormals</code> extension identifier is deprecated and implementations must now request vertex normals 
+		by adding <code>octvertexnormals</code> in the request header extensions parameter, as shown above.
     </div>
 </div>
