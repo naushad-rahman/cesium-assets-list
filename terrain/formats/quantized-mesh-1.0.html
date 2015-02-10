@@ -204,8 +204,16 @@ struct ExtensionHeader
     As new extensions are defined, they will be assigned a unique identifier. If no extensions are defined for the tileset, an <code>ExtensionHeader</code> will not included in the quanitzed-mesh. Multiple extensions may be appended to the quantized-mesh data, where ordering of each extension is determined by the server.
 </p>
 <p>
+	Multiple extensions may be requested by the client by delimiting extension names with a <code>-</code>.
+	For example, a client can request vertex normals and watermask using the following Accept header:
+
+        <pre>
+Accept : 'application/vnd.quantized-mesh;extensions=octvertexnormals-watermask'</pre>
+</p>
+<p>
 	The following extensions may be defined for a quantized-mesh:
 </p>
+<h3>Terrain Lighting</h3>
 <div class="columns">
     <div class="columns-left">Name:</div>
     <div class="columns-right">Oct-Encoded Per-Vertex Normals</div>
@@ -227,8 +235,7 @@ struct ExtensionHeader
 struct OctEncodedVertexNormals
 {
     unsigned char xy[vertexCount * 2];
-}
-		</pre>
+}</pre>
     </div>
 </div>
 <div class="columns">
@@ -243,5 +250,50 @@ Accept : 'application/vnd.quantized-mesh;extensions=octvertexnormals'
     <div class="columns-right">
 		The original implementation of this extension was requested using the extension name <code>vertexnormals</code>.  The <code>vertexnormals</code> extension identifier is deprecated and implementations must now request vertex normals 
 		by adding <code>octvertexnormals</code> in the request header extensions parameter, as shown above.
+    </div>
+</div>
+
+<h3>Water Mask</h3>
+<div class="columns">
+    <div class="columns-left">Name:</div>
+    <div class="columns-right">Water Mask</div>
+</div>
+<div class="columns">
+    <div class="columns-left">Id:</div>
+    <div class="columns-right"><code>2</code></div>
+</div>
+<div class="columns">
+    <div class="columns-left">Description:</div>
+    <div class="columns-right">
+        Adds coastline data used for rendering water effects.  The water mask is either 1 byte, in the case that the tile is all land or all water, or it is <code>256 * 256 * 1 = 65536</code>
+		bytes if the tile has a mix of land and water.  Each mask value is 0 for land and 255 for water. Values in the mask are defined from north-to-south, west-to-east; the first byte in the mask defines the
+		watermask value for the northwest corner of the tile.  Values between 0 and 255 are allowed as well in order to support anti-aliasing of the coastline.
+    </div>
+</div>
+<div class="columns">
+    <div class="columns-left">Data Definition:</div>
+    <div class="columns-right">
+		A Terrain Tile covered entirely by land or water is defined by a single byte.
+        <pre>
+struct WaterMask
+{
+    unsigned char mask;
+}</pre>
+
+	A Terrain Tile containing a mix of land and water define a 256 x 256 grid of height values.
+        <pre>
+struct WaterMask
+{
+    unsigned char mask[256 * 256];
+}</pre>
+    </div>
+</div>
+<div class="columns">
+    <div class="columns-left">Requesting:</div>
+    <div class="columns-right">
+		For the watermask to be included in the quantized-mesh, the client must request this extension by using the following HTTP Header:
+        <pre>
+Accept : 'application/vnd.quantized-mesh;extensions=watermask'
+		</pre>
     </div>
 </div>
