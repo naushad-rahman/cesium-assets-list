@@ -25,7 +25,7 @@ title: STK World Terrain
     <div class="columns-right">
         <a href="http://www.agi.com/" target="_blank"><img src="images/agi.png" width="64" height="24" style="border: none; vertical-align: bottom; margin-right: 10px;" alt="Analytical Graphics, Inc." title="Analytical Graphics, Inc." /></a>
         <br />
-        Copyright &copy; 2013-2014 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
+        Copyright &copy; 2013-2015 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
         <br />
         Please send any feedback on this tileset to <a href="mailto:support@agi.com">support@agi.com</a>.
     </div>
@@ -33,9 +33,12 @@ title: STK World Terrain
 <div class="columns">
     <div class="columns-left">Tiles URL:</div>
     <div class="columns-right">
-        <pre>//cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
-        <pre>https://cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
-        <pre>http://cesiumjs.org/stk-terrain/tilesets/world/tiles</pre>
+        <pre>//assets.agi.com/stk-terrain/world</pre>
+        <pre>https://assets.agi.com/stk-terrain/world</pre>
+        <pre>http://assets.agi.com/stk-terrain/world</pre>
+        <pre>//assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
+        <pre>https://assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
+        <pre>http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
     </div>
 </div>
 <div class="columns">
@@ -74,25 +77,28 @@ title: STK World Terrain
 <p>
     <pre>
 // In an application that uses CesiumWidget:
-var widget = new Cesium.CesiumWidget({
+var widget = new Cesium.CesiumWidget('cesiumContainer', {
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
+        url : '//assets.agi.com/stk-terrain/world'
     })
 });
 
 // In an application that uses Viewer:
-var viewer = new Cesium.Viewer({
+var viewer = new Cesium.Viewer('cesiumContainer', {
+    baseLayerPicker : false,
     terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
+        url : '//assets.agi.com/stk-terrain/world'
     })
 });
+
 
 // In other applications:
 var scene = ...;
 scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-    url : '//cesiumjs.org/stk-terrain/tilesets/world/tiles'
+    url : '//assets.agi.com/stk-terrain/world'
 });
     </pre>
+    For a comprehensive overview on incorporating STK World Terrain into Cesium applications, refer to the <a href="{{ BASE_PATH }}/2013/02/15/Cesium-Terrain-Tutorial/">Cesium Terrain and Water Tutorial</a>
 </p>
 <h2>Sources of elevation data</h2>
 <p>
