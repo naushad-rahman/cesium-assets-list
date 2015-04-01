@@ -17,10 +17,8 @@ title: Small Terrain
 <div class="columns">
     <div class="columns-left">Description:</div>
     <div class="columns-right">
-        Small Terrain is a medium-resolution, worldwide terrain elevation tileset useful for Earth surface visualization and other uses.
-        We recommend that most users use <a href="stk-world-terrain.html">STK World Terrain</a> instead of this tileset, as that
-        tileset is higher resolution and is updated more frequently.  However, this tileset includes a water mask and represents
-        elevations using heightmaps, so it may still be useful for some purposes.
+        The Small Terrain tileset has been deprecated in Cesium 1.8 and will be removed in version 1.11. This has been replaced by <a href="stk-world-terrain.html">STK World Terrain</a>, as that
+        tileset is higher resolution, supports terrain lighting and water effects, and is updated more frequently.
     </div>
 </div>
 <div class="columns">
@@ -28,7 +26,7 @@ title: Small Terrain
     <div class="columns-right">
         <a href="http://www.agi.com/" target="_blank"><img src="images/agi.png" width="64" height="24" style="border: none; vertical-align: bottom; margin-right: 10px;" alt="Analytical Graphics, Inc." title="Analytical Graphics, Inc." /></a>
         <br />
-        Copyright &copy; 2013-2014 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
+        Copyright &copy; 2013-2015 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
         <br />
         Please send any feedback on this tileset to <a href="mailto:support@agi.com">support@agi.com</a>.
     </div>
@@ -77,14 +75,14 @@ title: Small Terrain
 <p>
     <pre>
 // In an application that uses CesiumWidget:
-var widget = new Cesium.CesiumWidget({
+var widget = new Cesium.CesiumWidget('cesiumContainer', {
     terrainProvider : new Cesium.CesiumTerrainProvider({
         url : '//cesiumjs.org/tilesets/terrain/smallterrain'
     })
 });
 
 // In an application that uses Viewer:
-var viewer = new Cesium.Viewer({
+var viewer = new Cesium.Viewer('cesiumContainer', {
     terrainProvider : new Cesium.CesiumTerrainProvider({
         url : '//cesiumjs.org/tilesets/terrain/smallterrain'
     })
