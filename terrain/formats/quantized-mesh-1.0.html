@@ -7,27 +7,27 @@ title: quantized-mesh-1.0 terrain format
     A <a href="../index.html">terrain tileset</a> in <code>quantized-mesh-1.0</code> format is a simple multi-resolution quadtree pyramid of heightmaps according to the <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> layout and global-geodetic profile.  All tiles have the extension <code>.terrain</code>.  So, if the Tiles URL for a tileset is:
 </p>
 <pre>
-//cesiumjs.org/stk-terrain/tilesets/world/tiles
+//assets.agi.com/stk-terrain/tilesets/world/tiles
 </pre>
 <p>
     Then the two root files of the pyramid are found at these URLs:
 </p>
 <ul>
-    <li>(-180 deg, -90 deg) - (0 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/0/0/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/0/0/0.terrain</a></li>
-    <li>(0 deg, -90 deg) - (180 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/0/1/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/0/1/0.terrain</a></li>
+    <li>(-180 deg, -90 deg) - (0 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/0/0/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/0/0/0.terrain</a></li>
+    <li>(0 deg, -90 deg) - (180 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/0/1/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/0/1/0.terrain</a></li>
 </ul>
 <p>
     The eight tiles at the next level are found at these URLs:
 </p>
 <ul>
-    <li>(-180 deg, -90 deg) - (-90 deg, 0 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/0.terrain</a></li>
-    <li>(-90 deg, -90 deg) - (0 deg, 0 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/0.terrain</a></li>
-    <li>(0 deg, -90 deg) - (90 deg, 0 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/0.terrain</a></li>
-    <li>(90 deg, -90 deg) - (180 deg, 0 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/0.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/0.terrain</a></li>
-    <li>(-180 deg, 0 deg) - (-90 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/1.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/0/1.terrain</a></li>
-    <li>(-90 deg, 0 deg) - (0 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/1.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/1/1.terrain</a></li>
-    <li>(0 deg, 0 deg) - (90 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/2/1.terrain</a></li>
-    <li>(90 deg, 0 deg) - (180 deg, 90 deg) - <a href="//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain">//cesiumjs.org/stk-terrain/tilesets/world/tiles/1/3/1.terrain</a></li>
+    <li>(-180 deg, -90 deg) - (-90 deg, 0 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/0/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/0/0.terrain</a></li>
+    <li>(-90 deg, -90 deg) - (0 deg, 0 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/1/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/1/0.terrain</a></li>
+    <li>(0 deg, -90 deg) - (90 deg, 0 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/2/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/2/0.terrain</a></li>
+    <li>(90 deg, -90 deg) - (180 deg, 0 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/3/0.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/3/0.terrain</a></li>
+    <li>(-180 deg, 0 deg) - (-90 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/0/1.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/0/1.terrain</a></li>
+    <li>(-90 deg, 0 deg) - (0 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/1/1.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/1/1.terrain</a></li>
+    <li>(0 deg, 0 deg) - (90 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/2/1.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/2/1.terrain</a></li>
+    <li>(90 deg, 0 deg) - (180 deg, 90 deg) - <a href="//assets.agi.com/stk-terrain/tilesets/world/tiles/1/3/1.terrain">//assets.agi.com/stk-terrain/tilesets/world/tiles/1/3/1.terrain</a></li>
 </ul>
 <p>
     When requesting tiles, be sure to include the following HTTP header in the request:
