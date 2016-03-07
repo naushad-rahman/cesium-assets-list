@@ -1,110 +1,30 @@
 ---
-layout: page
+layout: dataset
 title: STK World Terrain
+dataset-name: STK World Terrain
+img: 'images/stk-world-terrain.jpg'
+link: 'https://cesiumjs.org/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles'
+description: STK World Terrain is a high-resolution, worldwide terrain elevation tileset useful for Earth surface visualization and other uses.  It continually grows in size and resolution as new sources of high-quality elevation data are found, acquired, and incorpoated into the tileset.
+tiles-url:
+ - '//assets.agi.com/stk-terrain/world'
+ - 'https://assets.agi.com/stk-terrain/world'
+ - 'http://assets.agi.com/stk-terrain/world'
+ - '//assets.agi.com/stk-terrain/v1/tilesets/world/tiles'
+ - 'https://assets.agi.com/stk-terrain/v1/tilesets/world/tiles'
+ - 'http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles'
+extent:
+ west: -180
+ east: 180
+ south: -90
+ north: 90
+level: 16
 ---
 {% include JB/setup %}
-<p>
-    <a href="{{ BASE_PATH }}/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles"><img src="images/stk-world-terrain.jpg" width="834" height="292" alt="STK World Terrain" /></a>
-</p>
-<p>
-</p>
-<p>
-</p>
-<div class="columns">
-    <div class="columns-left">Name:</div>
-    <div class="columns-right">STK World Terrain</div>
-</div>
-<div class="columns">
-    <div class="columns-left">Description:</div>
-    <div class="columns-right">
-        STK World Terrain is a high-resolution, worldwide terrain elevation tileset useful for Earth surface visualization and other uses.  It continually grows in size and resolution as new sources of high-quality elevation data are found, acquired, and incorpoated into the tileset.
-    </div>
-</div>
-<div class="columns">
-    <div class="columns-left">Provider:</div>
-    <div class="columns-right">
-        <a href="http://www.agi.com/" target="_blank"><img src="images/agi.png" width="64" height="24" style="border: none; vertical-align: bottom; margin-right: 10px;" alt="Analytical Graphics, Inc." title="Analytical Graphics, Inc." /></a>
-        <br />
-        Copyright &copy; 2013-2015 Analytical Graphics, Inc. (AGI).  All Rights Reserved.  This tileset may not be copied or used except under the terms described in the <a href="#TermsOfUse">Terms of Use</a> or by a separate written agreement with AGI.
-        <br />
-        Please send any feedback on this tileset to <a href="mailto:todd@agi.com">todd@agi.com</a>.
-    </div>
-</div>
-<div class="columns">
-    <div class="columns-left">Tiles URL:</div>
-    <div class="columns-right">
-        <pre>//assets.agi.com/stk-terrain/world</pre>
-        <pre>https://assets.agi.com/stk-terrain/world</pre>
-        <pre>http://assets.agi.com/stk-terrain/world</pre>
-        <pre>//assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
-        <pre>https://assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
-        <pre>http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles</pre>
-    </div>
-</div>
-<div class="columns">
-    <div class="columns-left">Extent</div>
-    <div class="columns-right">
-        <table>
-            <tr>
-                <td>West:</td><td>-180 deg</td>
-                <td>East:</td><td>180 deg</td>
-            </tr>
-            <tr>
-                <td>South:</td><td>-90 deg</td>
-                <td>North:</td><td>90 deg<td>
-            </tr>
-        </table>
-    </div>
-</div>
-<div class="columns">
-    <div class="columns-left">Maximum Level:</div>
-    <div class="columns-right">16</div>
-</div>
-<div class="columns">
-    <div class="columns-left">Tile Format:</div>
-    <div class="columns-right">
-        <a href="formats/quantized-mesh-1.0.html">quantized-mesh-1.0</a>
-    </div>
-</div>
-<div class="columns">
-    <div class="columns-left"></div>
-    <div class="columns-right">
-        <a class="btn btn-primary btn-small" href="{{ BASE_PATH }}/stk-terrain/ViewTileset.html?tileset=%2F%2Fcesiumjs.org%2Fstk-terrain%2Ftilesets%2Fworld%2Ftiles">View in Cesium</a>
-    </div>
-</div>
-
-<h2>Using this tileset in Cesium</h2>
-<p>
-    <pre>
-// In an application that uses CesiumWidget:
-var widget = new Cesium.CesiumWidget('cesiumContainer', {
-    terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : '//assets.agi.com/stk-terrain/world'
-    })
-});
-
-// In an application that uses Viewer:
-var viewer = new Cesium.Viewer('cesiumContainer', {
-    baseLayerPicker : false,
-    terrainProvider : new Cesium.CesiumTerrainProvider({
-        url : '//assets.agi.com/stk-terrain/world'
-    })
-});
-
-
-// In other applications:
-var scene = ...;
-scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-    url : '//assets.agi.com/stk-terrain/world'
-});
-    </pre>
-    For a comprehensive overview on incorporating STK World Terrain into Cesium applications, refer to the <a href="{{ BASE_PATH }}/2013/02/15/Cesium-Terrain-Tutorial/">Cesium Terrain and Water Tutorial</a>
-</p>
 <h2>Sources of elevation data</h2>
 <p>
     STK World Terrain currently includes elevation data from the following sources.
 </p>
-<table class="zipsTable">
+<table class="table table-striped">
     <tr>
         <th>Source</th>
         <th>Coverage</th>
@@ -136,22 +56,17 @@ scene.terrainProvider = new Cesium.CesiumTerrainProvider({
         <td>1000 meters</td>
     </tr>
 </table>
-<a name="TermsOfUse"></a>
+<br/><br/>
 <h2>Terms of use</h2>
 <p>
     STK World Terrain is provided for use in any application and for any purpose, including both commercial and non-commercial purposes, subject to the following conditions:
 </p>
 <p>
 <ul>
-    <li>You may not copy, store, or redistribute any portion of the tileset for use in an offline, disconnected, or local environment.  Client-side and proxy-based caching are allowed as long as it is a general caching mechanism caching other internet traffic as well, not just STK World Terrain data.</li>
-    <li>You may not put an unreasonable burden on the STK World Terrain server(s).  If you're concerned that your use may be deemed unreasonable, please <a href="mailto:todd@agi.com">contact AGI</a> to discuss it.</li>
+    <li>You may not copy, store, or redistribute any portion of the tileset for use in an offline, disconnected, or local environment.  Client-side and proxy-based caching are allowed as long as it is a general caching mechanism caching other internet traffic as well, not just  STK World Terrain data.</li>
+    <li>You may not put an unreasonable burden on the  STK World Terrain server(s).  If you're concerned that your use may be deemed unreasonable, please <a href="mailto:todd@agi.com">contact AGI</a> to discuss it.</li>
     <li>You must clearly display the attribution for this dataset, "&copy; Analytical Graphics, Inc., &copy; CGIAR-CSI, Produced using Copernicus data and information funded by the European Union - EU-DEM layers, &copy; Commonwealth of Australia (Geoscience Australia) 2012", any time any portion of the tileset is visible.</li>
-    <li>You agree that STK World Terrain is provided as-is and at-will, and will not hold AGI responsible for anything bad that happens as a result of your use of the tileset or your inability to use the tileset.  While AGI does not foresee doing so, AGI reserves the right to shut it down at any time, with or without notice.</li>
+    <li>You agree that  STK World Terrain is provided as-is and at-will, and will not hold AGI responsible for anything bad that happens as a result of your use of the tileset or your inability to use the tileset.  While AGI does not foresee doing so, AGI reserves the right to shut it down at any time, with or without notice.</li>
     <li>You agree that these terms of use may change at any time, and that your continued use of the tileset constitutes acceptance of the new terms.</li>
 </ul>
-</p>
-<h2>Offline and disconnected use</h2>
-<p>
-    To host this tileset on your own infrastructure, you need <a href="http://www.agi.com/products/stk/terrain-server">STK Terrain Server</a>.
-    STK Terrain Server enables use of this tileset in an offline or disconnected environment, such as on a private network disconnected from the Internet.  It also allows you to host the tileset closer to your users in order to improve performance, to overlay this tileset with your own terrain data, to create an entirely independent tileset from your own data, and to maintain full control over uptime and availability.
 </p>
