@@ -1,0 +1,59 @@
+---
+layout: dataset
+title: Cesium PAMap Terrain
+dataset-name: Cesium PAMAP Terrain
+img: 'images/pamap-terrain.png'
+link: 'https://s3.amazonaws.com/agi-tas-demo/PAEarth/index.html'
+description: Cesium PAMap Terrain is a high-resolution, Pennsylvania terrain elevation tileset useful for terrain surface visualization. The raw digital elevation model is managed by PASDA.
+tiles-url:
+ - '//assets.agi.com/stk-terrain/v1/tilesets/PAMAP/tiles'
+ - 'https://assets.agi.com/stk-terrain/v1/tilesets/PAMAP/tiles'
+ - 'http://assets.agi.com/stk-terrain/v1/tilesets/PAMAP/tiles'
+extent:
+ west: -180
+ east: 180
+ south: -90
+ north: 90
+level: 20
+---
+{% include JB/setup %}
+<h2>Sources of elevation data</h2>
+<p>
+    Cesium PAMap Terrain currently includes elevation data from the following sources.
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>Source</th>
+        <th>Coverage</th>
+        <th>Approximate Maximum Spacing Between Height Samples</th>
+    </tr>
+    <tr>
+        <td><a href="http://ned.usgs.gov/">PAMAP<a></td>
+        <td>Pennsylvania</td>
+        <td>1 meter</td>
+    </tr>
+    <tr>
+        <td><a href="http://srtm.csi.cgiar.org">CGIAR SRTM</a></td>
+        <td>Approximately -60 to 60 degrees latitude</td>
+        <td>90 meters</td>
+    </tr>
+    <tr>
+        <td><a href="https://lta.cr.usgs.gov/GTOPO30">GTOPO30</a></td>
+        <td>Entire Earth</td>
+        <td>1000 meters</td>
+    </tr>
+</table>
+<br/><br/>
+<h2>Terms of use</h2>
+<p>
+    Cesium PAMap Terrain is provided for use in any application and for any purpose, including both commercial and non-commercial purposes, subject to the following conditions:
+</p>
+<p>
+<ul>
+    <li>You may not copy, store, or redistribute any portion of the tileset for use in an offline, disconnected, or local environment.  Client-side and proxy-based caching are allowed as long as it is a general caching mechanism caching other internet traffic as well, not just  Cesium PAMap Terrain data.</li>
+    <li>You may not put an unreasonable burden on the  Cesium PAMap Terrain server(s).  If you're concerned that your use may be deemed unreasonable, please <a href="mailto:todd@agi.com">contact AGI</a> to discuss it.</li>
+    <li>You must clearly display the attribution for this dataset, "&copy; Analytical Graphics, Inc., &copy; CGIAR-CSI", any time any portion of the tileset is visible.</li>
+    <li>You agree that  Cesium PAMap Terrain is provided as-is and at-will, and will not hold AGI responsible for anything bad that happens as a result of your use of the tileset or your inability to use the tileset.  While AGI does not foresee doing so, AGI reserves the right to shut it down at any time, with or without notice.</li>
+    <li>You agree that these terms of use may change at any time, and that your continued use of the tileset constitutes acceptance of the new terms.</li>
+</ul>
+</p>
